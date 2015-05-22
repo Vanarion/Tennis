@@ -1,50 +1,61 @@
 package tennis;
 
-public class Jeu {
-
+public class Jeu
+{
+	// Déclarations des variables
 	private int ScoreJoueur1 = 0;
 	private int ScoreJoueur2 = 0;
 	private String nomJoueur2;
 	private String nomJoueur1;
 	
-	public Jeu(String playerOneName, String playerTwoName) {
+	// Constructeur
+	public Jeu(String playerOneName, String playerTwoName)
+	{
 		this.nomJoueur1 = playerOneName;
 		this.nomJoueur2 = playerTwoName;
 	}
 
-	public String getScore() {
-
-		if (hasWinner()) {
+	public String getScore()
+	{
+		if (hasWinner())
+		{
 			return playerWithHighestScore() + " gagne";
 		}
 		
-		if (hasAdvantage()) { 
+		if (hasAdvantage()) 
+		{ 
 			return "Avantage " + playerWithHighestScore(); 
 		}
 		
 		if (isDeuce())
 			return "Egalité";
 		
-		if(ScoreJoueur1 == ScoreJoueur2) {
+		if(ScoreJoueur1 == ScoreJoueur2)
+		{
 			return translateScore(ScoreJoueur1) + " All";
 		}
 		
 		return translateScore(ScoreJoueur1) + "," + translateScore(ScoreJoueur2);
 	}
 
-	private boolean isDeuce() {
+	private boolean isDeuce() 
+	{
 		return ScoreJoueur1 >= 3 && ScoreJoueur2 == ScoreJoueur1;
 	}
 	
-	private String playerWithHighestScore() {
+	private String playerWithHighestScore()
+	{
 		if (ScoreJoueur1 > ScoreJoueur2) {
 			return nomJoueur1;
-		} else {
+		} 
+		else
+		{
 			return nomJoueur2;
 		}
 	}
 	
-	private boolean hasWinner() {
+	private boolean hasWinner() 
+	{
 		if(ScoreJoueur2 >= 4 && ScoreJoueur2 >= ScoreJoueur1 + 2 )
 			return true;
 		if(ScoreJoueur2 >= 4 && ScoreJoueur1 >= ScoreJoueur2 + 2)
@@ -52,26 +63,29 @@ public class Jeu {
 		return false;
 	}
 	
-	private boolean hasAdvantage() {
+	private boolean hasAdvantage()
+	{
 		if (ScoreJoueur2 >= 4 && ScoreJoueur2 == ScoreJoueur1 + 1)
 			return true;
 		if (ScoreJoueur1 >= 4 && ScoreJoueur1 == ScoreJoueur2 + 1)
 			return true;
-		
 		return false;
-
 	}
 
-	public void playerOneScores() {
+	public void playerOneScores()
+	{
 		ScoreJoueur1++;
 	}
 
-	public void playerTwoScores() {
+	public void playerTwoScores()
+	{
 		ScoreJoueur2++;
 	}
 	
-	private String translateScore(int score) {
-		switch (score) {
+	private String translateScore(int score) 
+	{
+		switch (score) 
+		{
 		case 3:
 			return "Forty";
 		case 2:
